@@ -30,6 +30,16 @@ Website images are authentic public pages captured on 6 November 2026. CRM image
 
 The public catalog groups real products so customers can move from discovery into a product page.
 
+### Configure a door with a real handle
+
+![Live door builder comparing the original black 8020 door photograph with the selected pull handle 190 preview](assets/screenshots/07-door-builder.webp)
+
+The public builder compares the original photograph with a handle visualization; the original is preserved, and the interface explicitly says the preview is not a compatibility approval or a product photograph.
+
+![Actual handle picker with pull handle 190 selected and alternative catalog handles](assets/screenshots/08-handle-selection.webp)
+
+Customers select from the builder's door-specific handle list before providing contact details; availability and final fit remain subject to business review. These captures show the existing public builder opened directly from its embedded frame, with no form submission. This is a separate door-configuration example; the CRM walkthrough below uses the fictional standalone handle inquiry.
+
 ### 2. Keep the inquiry tied to its product
 
 ![Pull handle 190 product page with its empty inquiry form](assets/screenshots/02-product-inquiry.webp)
