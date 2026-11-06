@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph B[Browser - untrusted client]
+    C[Customer - public website]
+    U[Staff - CRM frontend on Render]
+  end
+  subgraph W[WordPress server]
+    P[Catalog and inquiry plugin]
+    Q[Inquiry snapshots and outbox]
+  end
+  subgraph S[Supabase server boundary]
+    A[Auth - staff sessions]
+    E[Intake Edge Function]
+    D[Postgres - RLS and guarded RPCs]
+    L[Public quote Edge Function]
+    F[Private Storage - schema configured]
+  end
+  C -->|Read pages and submit inquiry| P
+  P -->|Persist and enqueue| Q
+  Q -->|Signed HTTPS - HMAC SHA256| E
+  E -->|Server credential - atomic intake| D
+  U -->|Sign in| A
+  U -->|JWT - scoped Data API and RPC| D
+  L -->|Allowlisted quote lookup| D
+  U -.->|Link for customer - current E2E unverified| L
+  N[Solid lines: inspected implementation. Dashed: sharing path not currently verified. Storage upload UI not demonstrated.]

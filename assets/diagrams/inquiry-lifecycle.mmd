@@ -1,0 +1,15 @@
+flowchart TB
+  C[Customer browser - product inquiry]
+  P[WordPress server - persist original snapshot]
+  Q[WordPress server - enqueue outbox separately]
+  E[Server worker - claim lease and sign delivery]
+  V[Edge Function - validate HMAC and envelope]
+  D[Postgres transaction - replay or create CRM records]
+  T[Staff browser - work item and authoritative next task]
+  R[Server - revision-checked quote draft]
+  I[Server - explicit issuance and immutable version]
+  X[Retry with backoff or mark failed]
+  C --> P --> Q --> E --> V --> D --> T --> R --> I
+  E -->|Delivery failure| X
+  X -->|Retryable| E
+  N[Inspected implementation; no new live end-to-end submission. Customer and staff browsers cross separate server trust boundaries.]
