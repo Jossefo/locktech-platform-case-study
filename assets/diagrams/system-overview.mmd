@@ -22,4 +22,6 @@ flowchart TB
   U -->|JWT - scoped Data API and RPC| D
   L -->|Allowlisted quote lookup| D
   U -.->|Link for customer - current E2E unverified| L
+  M[WhatsApp - prepared draft; customer sends manually]
+  C -->|After confirmed website save| M
   N[Solid lines: inspected implementation. Dashed: sharing path not currently verified. Storage upload UI not demonstrated.]

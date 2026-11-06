@@ -12,4 +12,6 @@ flowchart TB
   C --> P --> Q --> E --> V --> D --> T --> R --> I
   E -->|Delivery failure| X
   X -->|Retryable| E
+  W[Customer opens WhatsApp draft - manual send]
+  P -->|After confirmed local save| W
   N[Inspected implementation; no new live end-to-end submission. Customer and staff browsers cross separate server trust boundaries.]
