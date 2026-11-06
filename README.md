@@ -10,10 +10,11 @@ A product inquiry is only useful if the sales team can understand what the custo
 
 ## My role
 
-I led the requirements, workflow priorities, implementation direction, and acceptance review across the website and CRM work. My scope included product-context handoff, the Hebrew RTL operator experience, follow-up rules, quote workflows, and staged release validation. Implementation and investigation used AI coding assistance. The existing WordPress platform, third-party tools, and manufacturer imagery predate or sit outside my contribution; I do not claim sole authorship of them.
+I led the requirements, workflow priorities, implementation direction, and acceptance review across the website and CRM work. My scope included product-context handoff, the Hebrew RTL operator experience, follow-up rules, quote workflows, and staged release validation. Implementation and investigation used AI coding assistance. I also directed AI-assisted visual prototyping for door/handle mockups, followed by a reusable layer-based configuration workflow. The existing WordPress platform, third-party tools, and manufacturer imagery predate or sit outside my contribution; I do not claim sole authorship of them.
 
-## Three implementation highlights
+## Implementation highlights
 
+- **Visual selection supports the conversation:** real door/handle references, AI-assisted early mockups, a layered preview, and a prefilled WhatsApp handoff help the customer explain their request.
 - **Context survives the handoff:** inquiry records retain source and product snapshots; an outbox and signed intake handler support retryable delivery.
 - **The next action has one owner:** active tasks drive follow-up, with database triggers mirroring the earliest task into compatibility fields.
 - **Quotes have a deliberate boundary:** revision-checked drafts, integer-agorot calculations, immutable issued versions, and explicit issuance separate preparation from commitment.
@@ -38,7 +39,9 @@ The public builder compares the original photograph with a handle visualization;
 
 ![Actual handle picker with pull handle 190 selected and alternative catalog handles](assets/screenshots/08-handle-selection.webp)
 
-Customers select from the builder's door-specific handle list before providing contact details; availability and final fit remain subject to business review. These captures show the existing public builder opened directly from its embedded frame, with no form submission. This is a separate door-configuration example; the CRM walkthrough below uses the fictional standalone handle inquiry.
+Customers select from the builder's door-specific handle list before providing contact details; availability and final fit remain subject to business review. These captures show the existing public builder opened directly from its embedded frame, with no form submission. The original CRM walkthrough below uses a standalone handle inquiry; the additional door-and-handle example follows the builder selection.
+
+[How AI-assisted prototyping became a layered preview](docs/visual-configuration-and-whatsapp.md) explains the documented asset workflow and the difference between offline AI preparation and live rendering.
 
 ### 2. Keep the inquiry tied to its product
 
@@ -70,6 +73,20 @@ The composer carries the item forward and asks staff to enter an approved price 
 
 The same work item remains readable at mobile width, with no horizontal overflow in this captured state.
 
+## Door and handle → customer case → WhatsApp
+
+![Actual CRM with a fictional customer, selected black 8020 door and pull handle 190](assets/screenshots/09-customer-door-and-handle.webp)
+
+The fictional work item retains the customer, source page, door and selected handle together; its next task is to verify measurements and fit before quoting.
+
+![The same fictional door-and-handle snapshot in the CRM products and quote tab](assets/screenshots/10-crm-selected-products.webp)
+
+The products tab carries the selected configuration into quote preparation without inventing an approved price or an issued document.
+
+![Actual WhatsApp landing page showing a prefilled fictional inquiry and buttons to continue](assets/screenshots/11-whatsapp-draft.webp)
+
+The WhatsApp handoff prepares inquiry text with the selection, contact context and a source link; the customer must still send it. This is the real WhatsApp landing screen with independently prepared fictional text based on the inspected formatter, not a sent chat or proof of delivery. No production inquiry was created. [Read the complete fictional message](examples/fictional-whatsapp-message.txt).
+
 ## System architecture
 
 ![System overview with browser, WordPress, and Supabase server boundaries](assets/diagrams/system-overview.svg)
@@ -98,12 +115,13 @@ The delivered application contains a task-first workspace, connected inquiry con
 
 The 1 November release handover records deployment and authenticated read-only inspection of CRM screens. That is historical evidence, not a fresh verification of production writes or synchronization. No measured conversion gain, time saving, revenue impact, uptime, or adoption claim is made.
 
-**Current limitations:** hosted staging writes, current website intake delivery, public quote sharing/signing, automated message delivery, and external accounting/POS reconciliation are not certified by this review. A prior mobile website audit also found a chat overlay obstructing a product form; the clean CRM mobile screenshot does not resolve that website issue. There is no demonstrated AI feature in the product.
+**Current limitations:** hosted staging writes, current website intake delivery, public quote sharing/signing, automated message delivery, and external accounting/POS reconciliation are not certified by this review. A prior mobile website audit also found a chat overlay obstructing a product form; the clean CRM mobile screenshot does not resolve that website issue. AI-assisted visual preparation is documented; the inspected live selector composes prepared layers rather than calling a generative model for each selection.
 
 **Proposed measurements:** inquiry-to-first-response time, outbox failure age, inquiries without a scheduled task, and draft-to-issued quote time. These are measurement proposals, not reported results.
 
 ## Explore
 
+- [Visual configuration, AI preparation and WhatsApp](docs/visual-configuration-and-whatsapp.md): the selection and communication journey.
 - [Architecture](docs/architecture.md): components, trust boundaries and inquiry lifecycle.
 - [Engineering decisions](docs/engineering-decisions.md): rationale and operational costs.
 - [Verification and scope](docs/verification-and-scope.md): evidence matrix, screenshot provenance, rights, and remaining gaps.
